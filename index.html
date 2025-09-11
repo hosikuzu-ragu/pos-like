@@ -6,6 +6,14 @@
   <title>title</title>
 </head>
 
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>title</title>
+</head>
+
 <style>
   html {
     background-color: #f0f0f0;
@@ -116,6 +124,51 @@
     margin: 0;
     border-radius: 8px;
   }
+
+  /* 値段設定エリア */
+  .price-settings {
+    margin-top: 1em;
+    padding: 1.5em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .price-settings summary {
+    cursor: pointer;
+    outline: none; /* クリック時の青い枠線を消す */
+    font-weight: bold;
+  }
+  .price-settings summary h2 {
+    display: inline-block; /* h2をインラインブロックにしてsummaryと同じ行に */
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+  }
+  .price-settings[open] summary {
+    margin-bottom: 1em;
+  }
+  .setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75em;
+  }
+  .setting-item:last-child {
+    margin-bottom: 0;
+  }
+  .setting-item label {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  .setting-item input {
+    width: 120px;
+    padding: 0.5em;
+    font-size: 1.1em;
+    text-align: right;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 </style>
 
 <body>
@@ -151,14 +204,53 @@
       <button style="background-color: red; height: 90%" onclick="totalReset()">reset</button>
     </div>
   </div>
+
+  <details class="price-settings">
+    <summary><h2>値段設定</h2></summary>
+    <div class="settings-content">
+      <div class="setting-item">
+        <label for="warabimochi-price">わらび餅</label>
+        <input type="number" id="warabimochi-price">
+      </div>
+      <div class="setting-item">
+        <label for="yakitori-price">焼き鳥</label>
+        <input type="number" id="yakitori-price">
+      </div>
+      <div class="setting-item">
+        <label for="karubo-price">カルボ</label>
+        <input type="number" id="karubo-price">
+      </div>
+    </div>
+  </details>
 </body>
 
 <script>
   const payed = 0
   const total = document.getElementById("totalDisplay")
-  const warabimoti_fee = 100
-  const yakitori_fee = 200
-  const karubo_fee = 300
+  let warabimoti_fee = 100
+  let yakitori_fee = 200
+  let karubo_fee = 300
+
+  // 値段設定の入力欄を取得
+  const warabimochiPriceInput = document.getElementById('warabimochi-price');
+  const yakitoriPriceInput = document.getElementById('yakitori-price');
+  const karuboPriceInput = document.getElementById('karubo-price');
+
+  // inputの初期値を設定
+  warabimochiPriceInput.value = warabimoti_fee;
+  yakitoriPriceInput.value = yakitori_fee;
+  karuboPriceInput.value = karubo_fee;
+
+  // inputの値が変わったら、料金変数も更新するイベントリスナー
+  warabimochiPriceInput.addEventListener('change', () => {
+    warabimoti_fee = parseInt(warabimochiPriceInput.value) || 0; // 不正な値は0にする
+  });
+  yakitoriPriceInput.addEventListener('change', () => {
+    yakitori_fee = parseInt(yakitoriPriceInput.value) || 0;
+  });
+  karuboPriceInput.addEventListener('change', () => {
+    karubo_fee = parseInt(karuboPriceInput.value) || 0;
+  });
 
   function getCurrentTotal() {
     return parseInt(total.value)
@@ -203,5 +295,3 @@
     }
   }
 </script>
-
-</html>
