@@ -10,12 +10,15 @@
   html {
     background-color: #f0f0f0;
   }
+
   body {
     font-family: sans-serif;
     background-color: #f0f0f0;
-    margin: 0 auto; /* 中央寄せ */
+    margin: 0 auto;
+    /* 中央寄せ */
     padding: 2em;
-    max-width: 800px; /* 最大幅 */
+    max-width: 800px;
+    /* 最大幅 */
     display: flex;
     flex-direction: column;
     gap: 1.5em;
@@ -30,16 +33,19 @@
     gap: 1em;
     height: auto;
   }
+
   .display-label {
     width: 100px;
     flex-shrink: 0;
   }
+
   .display-label p {
     font-size: 1.2em;
     font-weight: bold;
     margin: 0;
     text-align: right;
   }
+
   .display input {
     width: 100%;
     height: auto;
@@ -58,7 +64,9 @@
     gap: 1.5em;
     height: auto;
   }
-  .products > div { /* 商品カード */
+
+  .products>div {
+    /* 商品カード */
     margin: 0;
     width: auto;
     height: auto;
@@ -69,8 +77,9 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
+
   .products p {
     text-align: center;
     font-size: 1.2em;
@@ -89,47 +98,32 @@
     border-radius: 4px;
     cursor: pointer;
   }
+
   .products button:active {
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   /* リセットボタンのスタイル */
   .products div:last-child {
-      padding: 0;
-      display: flex; /* 中のボタンを伸ばすため */
+    padding: 0;
+    display: flex;
+    /* 中のボタンを伸ばすため */
   }
+
   .products div:last-child button {
-    flex-grow: 1; /* 高さを親に合わせる */
+    flex-grow: 1;
+    /* 高さを親に合わせる */
     margin: 0;
     border-radius: 8px;
   }
 </style>
-
-<script>
-  payed = 0
-  total = 0
-  warabimoti_fee = 100
-  yakitori_fee = 200
-  karubo_fee = 300
-
-  function warabimoti(action){
-    switch(action){
-      case '+':
-        total += warabimoti_fee
-        break;
-      case '-':
-        total -= warabimoti_fee
-        break
-    }
-  }
-</script>
 
 <body>
   <div class="display">
     <div class="display-label">
       <p>合計</p>
     </div>
-    <input type="text" class="display" name="display" value="0" disabled>
+    <input type="text" class="display" id="totalDisplay" value="0" disabled>
   </div>
   <div class="display">
     <div class="display-label">
@@ -139,24 +133,75 @@
   </div>
   <div class="products">
     <div>
-      <button style="background-color: greenyellow;" onclick="">+</button>
+      <button style="background-color: greenyellow;" onclick="warabimoti('+')">+</button>
       <p>わらび餅</p>
-      <button style="background-color: red;color: white;">-</button>
+      <button style="background-color: red;color: white;" onclick="warabimoti('-')">-</button>
     </div>
     <div>
-      <button style="background-color: greenyellow;">+</button>
+      <button style="background-color: greenyellow;" onclick="yakitori('+')">+</button>
       <p>焼き鳥</p>
-      <button style="background-color: red;color: white;">-</button>
+      <button style="background-color: red;color: white;" onclick="yakitori('-')">-</button>
     </div>
     <div>
-      <button style="background-color: greenyellow;">+</button>
+      <button style="background-color: greenyellow;" onclick="karubo('+')">+</button>
       <p>カルボ</p>
-      <button style="background-color: red;color: white;">-</button>
+      <button style="background-color: red;color: white;" onclick="karubo('-')">-</button>
     </div>
     <div>
-      <button style="background-color: red; height: 90%">reset</button>
+      <button style="background-color: red; height: 90%" onclick="totalReset()">reset</button>
     </div>
   </div>
 </body>
+
+<script>
+  const payed = 0
+  const total = document.getElementById("totalDisplay")
+  const warabimoti_fee = 100
+  const yakitori_fee = 200
+  const karubo_fee = 300
+
+  function getCurrentTotal() {
+    return parseInt(total.value)
+  }
+  function addTotal(num) {
+    total.value = getCurrentTotal() + num
+  }
+  function totalReset(){
+    total.value = 0
+  }
+
+  function warabimoti(action) {
+    switch (action) {
+      case '+':
+        addTotal(warabimoti_fee)
+        break;
+      case '-':
+        addTotal(-warabimoti_fee)
+        break
+    }
+  }
+
+  function yakitori(action) {
+    switch (action) {
+      case '+':
+        addTotal(yakitori_fee)
+        break;
+      case '-':
+        addTotal(-yakitori_fee)
+        break
+    }
+  }
+
+  function karubo(action) {
+    switch (action) {
+      case '+':
+        addTotal(karubo_fee)
+        break;
+      case '-':
+        addTotal(-karubo_fee)
+        break
+    }
+  }
+</script>
 
 </html>
