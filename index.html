@@ -8,59 +8,120 @@
 
 <style>
   html {
-    width: 90%;
-    height: 100%;
+    background-color: #f0f0f0;
   }
-
   body {
-    width: 100%;
-    height: 100%;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    margin: 0 auto; /* 中央寄せ */
+    padding: 2em;
+    max-width: 800px; /* 最大幅 */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    height: auto;
   }
 
+  /* 表示エリア */
   .display {
     width: 100%;
-    height: 10%;
     display: flex;
+    align-items: center;
+    gap: 1em;
+    height: auto;
   }
   .display-label {
-    height: 100%;
-    width: 10%;
+    width: 100px;
+    flex-shrink: 0;
   }
   .display-label p {
-    font-size: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+    text-align: right;
   }
   .display input {
-    height: 90%;
-    width: 80%;
+    width: 100%;
+    height: auto;
+    padding: 0.5em;
+    font-size: 2em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: right;
+    box-sizing: border-box;
   }
 
+  /* 商品エリア */
   .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5em;
+    height: auto;
+  }
+  .products > div { /* 商品カード */
+    margin: 0;
+    width: auto;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1em;
     display: flex;
-    height: 25%;
-  }
-  .products div {
-    margin: 1%;
-    width: 20%;
-    border: 1px solid black;
-  }
-  .products button {
-    margin: 5%;
-    width: 90%;
-    height: 20%;
-  }
-  .products button:active {
-    box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 3px rgba(0, 0, 0, 0.6);;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
   .products p {
     text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 1em 0;
     height: auto;
+  }
+
+  .products button {
+    width: 100%;
+    margin: 0.25em 0;
+    height: auto;
+    padding: 0.5em;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .products button:active {
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  /* リセットボタンのスタイル */
+  .products div:last-child {
+      padding: 0;
+      display: flex; /* 中のボタンを伸ばすため */
+  }
+  .products div:last-child button {
+    flex-grow: 1; /* 高さを親に合わせる */
+    margin: 0;
+    border-radius: 8px;
   }
 </style>
 
 <script>
+  payed = 0
+  total = 0
+  warabimoti_fee = 100
+  yakitori_fee = 200
+  karubo_fee = 300
 
+  function warabimoti(action){
+    switch(action){
+      case '+':
+        total += warabimoti_fee
+        break;
+      case '-':
+        total -= warabimoti_fee
+        break
+    }
+  }
 </script>
 
 <body>
@@ -68,29 +129,32 @@
     <div class="display-label">
       <p>合計</p>
     </div>
-    <input type="text" class="display" name="display" disabled>
+    <input type="text" class="display" name="display" value="0" disabled>
   </div>
   <div class="display">
     <div class="display-label">
       <p>お預かり</p>
     </div>
-    <input type="text" class="display" name="display" disabled>
+    <input type="text" class="display" name="display" value="0" disabled>
   </div>
   <div class="products">
     <div>
-      <button style="background-color: greenyellow;">+</button>
-      <p>test p</p>
+      <button style="background-color: greenyellow;" onclick="">+</button>
+      <p>わらび餅</p>
       <button style="background-color: red;color: white;">-</button>
     </div>
     <div>
       <button style="background-color: greenyellow;">+</button>
-      <p>test p</p>
+      <p>焼き鳥</p>
       <button style="background-color: red;color: white;">-</button>
     </div>
     <div>
       <button style="background-color: greenyellow;">+</button>
-      <p>test p</p>
+      <p>カルボ</p>
       <button style="background-color: red;color: white;">-</button>
+    </div>
+    <div>
+      <button style="background-color: red; height: 90%">reset</button>
     </div>
   </div>
 </body>
