@@ -21,13 +21,13 @@ body {
 .main-content {
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
+    gap: 1em; /* Reduced gap */
     position: relative;
 }
 
 #toggle-calculator-btn {
-    padding: 1em 1.5em;
-    font-size: 1.2rem;
+    padding: 0.8em 1.2em; /* Reduced padding */
+    font-size: 1rem; /* Reduced font size */
     border: none;
     border-radius: 8px;
     background-color: #007bff;
@@ -49,16 +49,22 @@ body {
 /* Display Area */
 .display-area {
     background-color: #fff;
-    padding: 1.5em;
+    padding: 1em;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.top-displays {
+    display: flex;
+    gap: 1em;
 }
 
 .display {
     display: flex;
     align-items: center;
     gap: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em; /* Reduced margin */
+    flex: 1; /* Allow displays to grow */
 }
 
 .display:last-child {
@@ -66,19 +72,19 @@ body {
 }
 
 .display-label p {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Reduced font size */
     font-weight: 500;
     margin: 0;
     text-align: right;
-    width: 100px;
+    width: 80px;
 }
 
 .display input {
     background-color: #222;
     color: #fff;
     width: 100%;
-    padding: 0.5em 1em;
-    font-size: 3rem;
+    padding: 0.4em 0.8em; /* Reduced padding */
+    font-size: 2.5rem; /* Reduced font size */
     border: 1px solid #ddd;
     border-radius: 4px;
     text-align: right;
@@ -88,14 +94,14 @@ body {
 /* Products Area */
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5em;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusted minmax */
+    gap: 1em; /* Reduced gap */
 }
 
 .products>div {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 1.5em;
+    padding: 1em; /* Reduced padding */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -105,22 +111,22 @@ body {
 }
 
 .products>div:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
 .products p {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Reduced font size */
     font-weight: 500;
-    margin: 1em 0;
+    margin: 0.5em 0; /* Reduced margin */
 }
 
 .products button {
     width: 100%;
-    margin: 0.25em 0;
-    padding: 1em;
-    font-size: 1.8rem;
+    margin: 0.2em 0; /* Reduced margin */
+    padding: 0.5em; /* Reduced padding */
+    font-size: 1.5rem; /* Reduced font size */
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -139,14 +145,14 @@ body {
 
 .total-reset-btn {
     background-color: #dc3545;
-    height: 90%;
+    height: auto; /* Removed fixed height */
 }
 
 /* Check Area */
 .check {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5em; /* Reduced gap */
 }
 
 .check .cash {
@@ -157,8 +163,8 @@ body {
 
 .check button {
     width: 100%;
-    padding: 1.2em;
-    font-size: 1.2rem;
+    padding: 0.8em; /* Reduced padding */
+    font-size: 1rem; /* Reduced font size */
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
@@ -173,7 +179,7 @@ body {
 /* Price Settings */
 .price-settings {
     margin-top: 1em;
-    padding: 1.5em;
+    padding: 1em;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
@@ -184,15 +190,15 @@ body {
     cursor: pointer;
     outline: none;
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Reduced font size */
 }
 
 /* Calculator */
 .calculator {
     position: absolute;
-    top: 5em; /* Adjust as needed */
-    right: 1em; /* Changed from left */
-    width: 350px;
+    top: 4em; /* Adjust as needed */
+    right: 1em;
+    width: 320px; /* Reduced width */
     z-index: 1000;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -201,27 +207,15 @@ body {
 }
 
 .calculator-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 1.5em;
-    background-color: #eee;
-    border-bottom: 1px solid #ccc;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    cursor: move;
+    padding: 0.8em 1.2em;
 }
 
 .calculator-title {
-    font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 #close-calculator {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
+    font-size: 1.8rem;
 }
 
 .calculator table {
@@ -230,27 +224,17 @@ body {
 }
 
 .calculator td {
-    padding: 0.5em;
+    padding: 0.4em;
 }
 
 .calculator input[type="button"] {
-    width: 100%;
-    height: 70px;
-    font-size: 1.8rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.calculator .display {
-    padding: 0.5em;
+    height: 60px;
+    font-size: 1.5rem;
 }
 
 .calculator .display input {
-    font-size: 3rem; /* Increased font size */
-    height: 80px; /* Increased height */
+    font-size: 2.5rem;
+    height: 70px;
 }
 
 .calculator .operator {
@@ -263,7 +247,7 @@ body {
 
 footer {
     text-align: center;
-    margin-top: 2em;
+    margin-top: 1.5em;
     color: #888;
 }
 
@@ -273,16 +257,12 @@ footer {
         font-size: 18px;
     }
 
-    .container {
-        gap: 2em;
-    }
-
     .main-content {
-        gap: 2em;
+        gap: 1.5em;
     }
 
     .calculator {
-        right: 2em; /* Changed from left */
-        top: 8em;
+        right: 2em;
+        top: 5em;
     }
 }
