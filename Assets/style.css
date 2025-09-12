@@ -1,5 +1,14 @@
 * {
     touch-action: manipulation;
+    box-sizing: border-box;
+}
+
+input,
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-family: inherit;
 }
 
 html {
@@ -17,14 +26,20 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    display: -ms-grid;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5em;
 }
 
 .main-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     gap: 1em;
     position: relative;
 }
@@ -38,16 +53,24 @@ body {
 }
 
 .top-displays {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     gap: 1em;
 }
 
 .display {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     gap: 1em;
     margin-bottom: 0.5em;
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
 }
 
 .display:last-child {
@@ -71,10 +94,10 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
     text-align: right;
-    box-sizing: border-box;
 }
 
 .products {
+    display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1em;
@@ -82,10 +105,20 @@ body {
 
 .products .card {
     padding: 1em;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-transition: -webkit-transform 0.2s, box-shadow 0.2s;
+    transition: -webkit-transform 0.2s, box-shadow 0.2s;
     transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, -webkit-transform 0.2s;
 }
 
 .products .card:hover {
@@ -116,6 +149,7 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    -webkit-transition: background-color 0.3s;
     transition: background-color 0.3s;
 }
 
@@ -135,14 +169,20 @@ body {
 }
 
 .check {
+    display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 0.5em;
 }
 
 .check .cash {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     gap: 0.5em;
 }
 
@@ -154,6 +194,7 @@ body {
     border-radius: 4px;
     background-color: #fff;
     cursor: pointer;
+    -webkit-transition: background-color 0.3s;
     transition: background-color 0.3s;
 }
 
@@ -164,9 +205,8 @@ body {
 #given-reset-btn {
     background-color: #6c757d;
     color: white;
-    height: 100%;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .price-settings {
