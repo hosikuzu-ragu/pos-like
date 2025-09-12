@@ -6,14 +6,6 @@
   <title>title</title>
 </head>
 
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="utf-8">
-  <title>title</title>
-</head>
-
 <style>
   html {
     background-color: #f0f0f0;
@@ -182,7 +174,13 @@
     <div class="display-label">
       <p>お預かり</p>
     </div>
-    <input type="text" class="display" name="display" value="0" disabled>
+    <input type="text" class="display" name="givenDisplay" value="0" disabled>
+  </div>
+  <div class="display">
+    <div class="display-label">
+      <p>釣銭</p>
+    </div>
+    <input type="text" class="display" id="changeDisplay" value="0" disabled>
   </div>
   <div class="products">
     <div>
@@ -295,3 +293,5 @@
     }
   }
 </script>
+
+</html>
