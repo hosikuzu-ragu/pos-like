@@ -12,7 +12,7 @@
 <body>
   <div class="container">
     <div class="main-content">
-      <div class="display-area">
+      <div class="display-area card">
         <div class="top-displays">
           <div class="display">
             <div class="display-label">
@@ -23,68 +23,67 @@
 
           <div class="display">
             <div class="display-label">
-              <p>お預かり</p>
+              <p>預り金</p>
             </div>
             <input type="text" class="display" id="givenDisplay" value="0" disabled>
           </div>
         </div>
         <div class="display">
           <div class="display-label">
-            <p>釣銭</p>
+            <p>釣り銭</p>
           </div>
           <input type="text" class="display" id="changeDisplay" value="0" disabled>
         </div>
       </div>
 
       <div class="products">
-        <div>
-          <button class="add-btn" onclick="addTotal('warabimoti')">+</button>
-          <p>わらび餅</p>
-          <button class="remove-btn" onclick="addTotal('-warabimoti')">-</button>
+        <div class="card">
+          <button class="add-btn" data-item="warabimoti" data-action="add">+</button>
+          <p>わらび餅 <span class="item-count" id="warabimoti-count">0</span></p>
+          <button class="remove-btn" data-item="warabimoti" data-action="remove">-</button>
         </div>
-        <div>
-          <button class="add-btn" onclick="addTotal('yakitori')">+</button>
-          <p>焼き鳥</p>
-          <button class="remove-btn" onclick="addTotal('-yakitori')">-</button>
+        <div class="card">
+          <button class="add-btn" data-item="yakitori" data-action="add">+</button>
+          <p>焼き鳥 <span class="item-count" id="yakitori-count">0</span></p>
+          <button class="remove-btn" data-item="yakitori" data-action="remove">-</button>
         </div>
-        <div>
-          <button class="add-btn" onclick="addTotal('karubo')">+</button>
-          <p>カルボ</p>
-          <button class="remove-btn" onclick="addTotal('-karubo')">-</button>
+        <div class="card">
+          <button class="add-btn" data-item="karubo" data-action="add">+</button>
+          <p>カルボ <span class="item-count" id="karubo-count">0</span></p>
+          <button class="remove-btn" data-item="karubo" data-action="remove">-</button>
         </div>
-        <div>
-          <button class="total-reset-btn" onclick="totalReset()">reset</button>
+        <div class="card">
+          <button id="total-reset-btn" class="total-reset-btn">reset</button>
         </div>
       </div>
 
       <div class="check">
         <div class="cash">
-          <button>10000</button>
+          <button data-value="10000">10000</button>
         </div>
         <div class="cash">
-          <button>5000</button>
-          <button>1000</button>
+          <button data-value="5000">5000</button>
+          <button data-value="1000">1000</button>
         </div>
         <div class="cash">
-          <button>500</button>
-          <button>100</button>
+          <button data-value="500">500</button>
+          <button data-value="100">100</button>
         </div>
         <div class="cash">
-          <button>50</button>
-          <button>10</button>
+          <button data-value="50">50</button>
+          <button data-value="10">10</button>
         </div>
         <div class="cash">
-          <button>5</button>
-          <button>1</button>
+          <button data-value="5">5</button>
+          <button data-value="1">1</button>
         </div>
         <div>
-          <button onclick="givenReset()">reset</button>
+          <button id="given-reset-btn">reset</button>
         </div>
       </div>
 
-      <details class="price-settings">
+      <details class="price-settings card">
         <summary>
-          <h2>値段設定</h2>
         </summary>
         <div class="settings-content">
           <div class="setting-item">
@@ -98,6 +97,10 @@
           <div class="setting-item">
             <label for="karubo-price">カルボ</label>
             <input type="number" id="karubo-price">
+          </div>
+
+          <div>
+            <p>～使い方～</p>
           </div>
         </div>
       </details>
