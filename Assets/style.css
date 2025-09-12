@@ -1,36 +1,33 @@
 html {
     background-color: #f0f2f5;
+    font-size: 16px; /* Base font size */
 }
 
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
-    padding: 2em;
+    padding: 1em;
     color: #333;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2em;
+    gap: 1.5em;
 }
 
 .main-content {
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: 1.5em;
     position: relative;
 }
 
 #toggle-calculator-btn {
-    position: fixed;
-    left: 1em;
-    top: 1em;
-    z-index: 1001;
-    padding: 0.75em 1.5em;
-    font-size: 1em;
+    padding: 1em 1.5em;
+    font-size: 1.2rem;
     border: none;
     border-radius: 8px;
     background-color: #007bff;
@@ -38,6 +35,7 @@ body {
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s;
+    align-self: flex-end; /* Align to the right */
 }
 
 #toggle-calculator-btn:hover {
@@ -68,11 +66,11 @@ body {
 }
 
 .display-label p {
-    font-size: 1.2em;
+    font-size: 1.5rem;
     font-weight: 500;
     margin: 0;
     text-align: right;
-    width: 80px;
+    width: 100px;
 }
 
 .display input {
@@ -80,7 +78,7 @@ body {
     color: #fff;
     width: 100%;
     padding: 0.5em 1em;
-    font-size: 2.5em;
+    font-size: 3rem;
     border: 1px solid #ddd;
     border-radius: 4px;
     text-align: right;
@@ -90,14 +88,14 @@ body {
 /* Products Area */
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.5em;
 }
 
 .products>div {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 1em;
+    padding: 1.5em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -113,7 +111,7 @@ body {
 
 .products p {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.5rem;
     font-weight: 500;
     margin: 1em 0;
 }
@@ -121,8 +119,8 @@ body {
 .products button {
     width: 100%;
     margin: 0.25em 0;
-    padding: 0.75em;
-    font-size: 1.5em;
+    padding: 1em;
+    font-size: 1.8rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -147,7 +145,7 @@ body {
 /* Check Area */
 .check {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1em;
 }
 
@@ -159,8 +157,8 @@ body {
 
 .check button {
     width: 100%;
-    padding: 1em;
-    font-size: 1.1em;
+    padding: 1.2em;
+    font-size: 1.2rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
@@ -186,15 +184,15 @@ body {
     cursor: pointer;
     outline: none;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1.5rem;
 }
 
 /* Calculator */
 .calculator {
-    position: fixed;
-    left: 1em;
-    top: 5em;
-    width: 320px;
+    position: absolute;
+    top: 5em; /* Adjust as needed */
+    right: 1em; /* Changed from left */
+    width: 350px;
     z-index: 1000;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -206,7 +204,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75em 1em;
+    padding: 1em 1.5em;
     background-color: #eee;
     border-bottom: 1px solid #ccc;
     border-top-left-radius: 8px;
@@ -216,12 +214,13 @@ body {
 
 .calculator-title {
     font-weight: 500;
+    font-size: 1.2rem;
 }
 
 #close-calculator {
     background: none;
     border: none;
-    font-size: 1.5em;
+    font-size: 2rem;
     cursor: pointer;
 }
 
@@ -236,8 +235,8 @@ body {
 
 .calculator input[type="button"] {
     width: 100%;
-    height: 60px;
-    font-size: 1.5em;
+    height: 70px;
+    font-size: 1.8rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
@@ -250,8 +249,8 @@ body {
 }
 
 .calculator .display input {
-    font-size: 2em;
-    height: 60px;
+    font-size: 3rem; /* Increased font size */
+    height: 80px; /* Increased height */
 }
 
 .calculator .operator {
@@ -266,4 +265,24 @@ footer {
     text-align: center;
     margin-top: 2em;
     color: #888;
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+
+    .container {
+        gap: 2em;
+    }
+
+    .main-content {
+        gap: 2em;
+    }
+
+    .calculator {
+        right: 2em; /* Changed from left */
+        top: 8em;
+    }
 }

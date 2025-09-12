@@ -94,15 +94,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     calculatorHeader.addEventListener('mousedown', (e) => {
         isDragging = true;
-        offsetX = e.clientX - calculator.offsetLeft;
-        offsetY = e.clientY - calculator.offsetTop;
+        const rect = calculator.getBoundingClientRect();
+        const parentRect = calculator.parentElement.getBoundingClientRect();
+        offsetX = e.clientX - (rect.left - parentRect.left);
+        offsetY = e.clientY - (rect.top - parentRect.top);
         calculator.style.cursor = 'grabbing';
     });
 
     document.addEventListener('mousemove', (e) => {
         if (isDragging) {
-            calculator.style.left = `${e.clientX - offsetX}px`;
-            calculator.style.top = `${e.clientY - offsetY}px`;
+            const parentRect = calculator.parentElement.getBoundingClientRect();
+            let x = e.clientX - parentRect.left - offsetX;
+            let y = e.clientY - parentRect.top - offsetY;
+
+            // Prevent dragging outside the parent
+            x = Math.max(0, Math.min(x, parentRect.width - calculator.offsetWidth));
+            y = Math.max(0, Math.min(y, parentRect.height - calculator.offsetHeight));
+
+            calculator.style.left = `${x}px`;
+            calculator.style.top = `${y}px`;
         }
     });
 
