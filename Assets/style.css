@@ -1,19 +1,11 @@
-* {
-    touch-action: manipulation;
-    box-sizing: border-box;
-}
-
-input,
-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    font-family: inherit;
-}
-
 html {
+    box-sizing: border-box;
     background-color: #f0f2f5;
     font-size: 16px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 body {
@@ -21,25 +13,26 @@ body {
     margin: 0;
     padding: 1em;
     color: #333;
+    touch-action: manipulation;
+}
+
+input,
+button {
+    appearance: none;
+    font-family: inherit;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    display: -ms-grid;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5em;
 }
 
 .main-content {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     gap: 1em;
     position: relative;
 }
@@ -53,24 +46,16 @@ body {
 }
 
 .top-displays {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     gap: 1em;
 }
 
 .display {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     gap: 1em;
     margin-bottom: 0.5em;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    flex: 1;
 }
 
 .display:last-child {
@@ -98,7 +83,6 @@ body {
 }
 
 .products {
-    display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1em;
@@ -106,20 +90,10 @@ body {
 
 .products .card {
     padding: 1em;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-transition: -webkit-transform 0.2s, box-shadow 0.2s;
-    transition: -webkit-transform 0.2s, box-shadow 0.2s;
+    flex-direction: column;
+    justify-content: space-between;
     transition: transform 0.2s, box-shadow 0.2s;
-    transition: transform 0.2s, box-shadow 0.2s, -webkit-transform 0.2s;
 }
 
 .products .card:hover {
@@ -134,9 +108,9 @@ body {
 }
 
 .item-count {
-    font-size: 1.2rem; /* Match product name font size */
+    font-size: 1.2rem;
     font-weight: bold;
-    margin-left: 0.5em; /* Space between name and count */
+    margin-left: 0.5em;
     background-color: #eee;
     padding: 0.1em 0.4em;
     border-radius: 4px;
@@ -150,7 +124,6 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    -webkit-transition: background-color 0.3s;
     transition: background-color 0.3s;
 }
 
@@ -170,20 +143,14 @@ body {
 }
 
 .check {
-    display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 0.5em;
 }
 
 .check .cash {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     gap: 0.5em;
 }
 
@@ -195,7 +162,6 @@ body {
     border-radius: 4px;
     background-color: #fff;
     cursor: pointer;
-    -webkit-transition: background-color 0.3s;
     transition: background-color 0.3s;
 }
 
@@ -221,6 +187,51 @@ body {
     font-size: 1.2rem;
 }
 
+.add-product-form input {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add-product-form button, #share-btn {
+    padding: 0.8em;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.add-product-form button { background-color: #007bff; width: 100%; }
+
+#share-btn { background-color: #17a2b8; }
+
+.settings-content .setting-item {
+    display: flex;
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.settings-content .setting-item input[type="text"] {
+    flex-grow: 1;
+}
+
+.settings-content .setting-item input {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.remove-product-btn {
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
 footer {
     padding: 10px 0px;
     display: flex;
@@ -239,14 +250,8 @@ footer {
     .main-content {
         gap: 1.5em;
     }
-
-    .calculator {
-        right: 2em;
-        top: 5em;
-    }
 }
 
-/* Safari fix for disabled input opacity */
 .display input:disabled {
     opacity: 1;
     -webkit-text-fill-color: currentcolor;

@@ -37,30 +37,8 @@
         </div>
       </div>
 
-      <div class="products">
-
-        <div class="card">
-          <button class="add-btn" data-item="warabimoti" data-action="add">+</button>
-          <p>わらび餅 <span class="item-count" id="warabimoti-count">0</span></p>
-          <button class="remove-btn" data-item="warabimoti" data-action="remove">-</button>
-        </div>
-
-        <div class="card">
-          <button class="add-btn" data-item="yakitori" data-action="add">+</button>
-          <p>焼き鳥 <span class="item-count" id="yakitori-count">0</span></p>
-          <button class="remove-btn" data-item="yakitori" data-action="remove">-</button>
-        </div>
-
-        <div class="card">
-          <button class="add-btn" data-item="karubo" data-action="add">+</button>
-          <p>カルボ <span class="item-count" id="karubo-count">0</span></p>
-          <button class="remove-btn" data-item="karubo" data-action="remove">-</button>
-        </div>
-
-        <div class="card">
-          <button id="total-reset-btn" class="total-reset-btn">all reset</button>
-        </div>
-
+      <div class="products" id="products-container">
+        <!-- Products will be dynamically added here -->
       </div>
 
       <div class="check">
@@ -96,28 +74,28 @@
       </div>
 
       <details class="price-settings card">
-        <summary>
-        </summary>
-        <div class="settings-content">
-
-          <div class="setting-item">
-            <label for="warabimochi-price">わらび餅</label>
-            <input type="number" id="warabimochi-price">
-          </div>
-
-          <div class="setting-item">
-            <label for="yakitori-price">焼き鳥</label>
-            <input type="number" id="yakitori-price">
-          </div>
-
-          <div class="setting-item">
-            <label for="karubo-price">カルボ</label>
-            <input type="number" id="karubo-price">
-          </div>
-
-          <div>
-            <a href="./test.html">debug info</a>
-          </div>
+        <summary>商品・価格設定</summary>
+        <div class="settings-content" id="price-settings-container">
+          <!-- Price settings will be dynamically added here -->
+        </div>
+        <div class="add-product-form">
+          <hr>
+          <p><b>新しい商品を追加</b></p>
+          <input type="text" id="new-product-name" placeholder="商品名">
+          <input type="number" id="new-product-price" placeholder="価格">
+          <button id="add-product-btn">追加</button>
+        </div>
+        <div class="share-section" style="margin-top: 1em;">
+            <hr>
+            <p><b>共有URL</b></p>
+            <div style="display: flex; gap: 0.5em; align-items: center;">
+                <input type="text" id="share-url-display" readonly style="flex-grow: 1; padding: 0.5em; border: 1px solid #ccc; border-radius: 4px; background-color: #e9ecef;">
+                <button id="share-btn">コピー</button>
+            </div>
+            <span id="share-confirmation" style="margin-top: 0.5em; color: green; display: none;">コピーしました！</span>
+        </div>
+        <div style="margin-top: 1em;">
+          <a href="./test.html">debug info</a>
         </div>
       </details>
     </div>
@@ -125,7 +103,7 @@
 
   <footer>
     <p>&copy;T.A.</p>
-    <p>v1.0.6</p>
+    <p>v1.1.0</p>
     <p id="lastModified"></p>
   </footer>
 </body>
