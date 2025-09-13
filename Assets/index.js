@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const shareConfirmation = document.getElementById('share-confirmation');
     const shareURLDisplay = document.getElementById('share-url-display');
     const priceSettingsDetails = document.querySelector('.price-settings');
+    const allResetBtn = document.getElementById('total-reset-btn');
 
     // --- STATE ---
     const state = {
@@ -72,11 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             productsContainer.appendChild(productCard);
         });
-        const resetCard = document.createElement('div');
-        resetCard.className = 'card';
-        resetCard.innerHTML = `<button id="total-reset-btn" class="total-reset-btn">all reset</button>`;
-        productsContainer.appendChild(resetCard);
-        document.getElementById('total-reset-btn').addEventListener('click', totalReset);
     };
 
     const renderSettings = () => {
@@ -128,11 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (action === 'remove') {
             product.quantity = Math.max(0, product.quantity - 1);
         }
-        
+
         document.querySelector(`.item-count[data-id="${productId}"]`).textContent = product.quantity;
         calculateTotal();
     };
-    
+
     const addProduct = () => {
         const name = newProductNameInput.value.trim();
         const price = parseInt(newProductPriceInput.value, 10);
@@ -170,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         saveStateToURL();
         render();
     };
-    
+
     const totalReset = () => {
         state.products.forEach(p => p.quantity = 0);
         state.givenAmount = 0;
@@ -204,15 +200,16 @@ document.addEventListener('DOMContentLoaded', () => {
             updateProduct(id, 'price', value);
         }
     });
-    
+
     settingsContainer.addEventListener('click', (e) => {
         if (e.target.classList.contains('remove-product-btn')) {
-            if(confirm('この商品を削除しますか？')) {
+            if (confirm('この商品を削除しますか？')) {
                 removeProduct(e.target.dataset.id);
             }
         }
     });
 
+    allResetBtn.addEventListener('click', totalReset);
     addProductBtn.addEventListener('click', addProduct);
     givenResetBtn.addEventListener('click', givenReset);
     cashButtons.forEach(button => {

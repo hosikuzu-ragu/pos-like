@@ -11,29 +11,34 @@
 <body>
   <div class="container">
     <div class="main-content">
-      <div class="display-area card">
+      <div class="flex-wrapper" style="display: flex;">
+        <div class="display-area card">
 
-        <div class="top-displays">
-          <div class="display">
-            <div class="display-label">
-              <p>合計</p>
+          <div class="top-displays">
+            <div class="display">
+              <div class="display-label">
+                <p>合計</p>
+              </div>
+              <input type="text" class="display" id="totalDisplay" value="0" disabled>
             </div>
-            <input type="text" class="display" id="totalDisplay" value="0" disabled>
+
+            <div class="display">
+              <div class="display-label">
+                <p>預り金</p>
+              </div>
+              <input type="text" class="display" id="givenDisplay" value="0" disabled>
+            </div>
           </div>
 
           <div class="display">
             <div class="display-label">
-              <p>預り金</p>
+              <p>釣り銭</p>
             </div>
-            <input type="text" class="display" id="givenDisplay" value="0" disabled>
+            <input type="text" class="display" id="changeDisplay" value="0" disabled>
           </div>
         </div>
-
-        <div class="display">
-          <div class="display-label">
-            <p>釣り銭</p>
-          </div>
-          <input type="text" class="display" id="changeDisplay" value="0" disabled>
+        <div class="card">
+          <button id="total-reset-btn" class="total-reset-btn">all reset</button>
         </div>
       </div>
 
@@ -86,13 +91,14 @@
           <button id="add-product-btn">追加</button>
         </div>
         <div class="share-section" style="margin-top: 1em;">
-            <hr>
-            <p><b>共有URL</b></p>
-            <div style="display: flex; gap: 0.5em; align-items: center;">
-                <input type="text" id="share-url-display" readonly style="flex-grow: 1; padding: 0.5em; border: 1px solid #ccc; border-radius: 4px; background-color: #e9ecef;">
-                <button id="share-btn">コピー</button>
-            </div>
-            <span id="share-confirmation" style="margin-top: 0.5em; color: green; display: none;">コピーしました！</span>
+          <hr>
+          <p><b>共有URL</b></p>
+          <div style="display: flex; gap: 0.5em; align-items: center;">
+            <input type="text" id="share-url-display" readonly
+              style="flex-grow: 1; padding: 0.5em; border: 1px solid #ccc; border-radius: 4px; background-color: #e9ecef;">
+            <button id="share-btn">コピー</button>
+          </div>
+          <span id="share-confirmation" style="margin-top: 0.5em; color: green; display: none;">コピーしました！</span>
         </div>
         <div style="margin-top: 1em;">
           <a href="./test.html">debug info</a>
