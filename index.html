@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="./Assets/style.css">
 </head>
 
-
 <body>
   <div class="container">
     <div class="main-content">
       <div class="display-area card">
+
         <div class="top-displays">
           <div class="display">
             <div class="display-label">
@@ -28,6 +28,7 @@
             <input type="text" class="display" id="givenDisplay" value="0" disabled>
           </div>
         </div>
+
         <div class="display">
           <div class="display-label">
             <p>釣り銭</p>
@@ -37,69 +38,85 @@
       </div>
 
       <div class="products">
+
         <div class="card">
           <button class="add-btn" data-item="warabimoti" data-action="add">+</button>
           <p>わらび餅 <span class="item-count" id="warabimoti-count">0</span></p>
           <button class="remove-btn" data-item="warabimoti" data-action="remove">-</button>
         </div>
+
         <div class="card">
           <button class="add-btn" data-item="yakitori" data-action="add">+</button>
           <p>焼き鳥 <span class="item-count" id="yakitori-count">0</span></p>
           <button class="remove-btn" data-item="yakitori" data-action="remove">-</button>
         </div>
+
         <div class="card">
           <button class="add-btn" data-item="karubo" data-action="add">+</button>
           <p>カルボ <span class="item-count" id="karubo-count">0</span></p>
           <button class="remove-btn" data-item="karubo" data-action="remove">-</button>
         </div>
+
         <div class="card">
           <button id="total-reset-btn" class="total-reset-btn">all reset</button>
         </div>
+
       </div>
 
       <div class="check">
+
         <div class="cash">
           <button data-value="10000">10000</button>
         </div>
+
         <div class="cash">
           <button data-value="5000">5000</button>
           <button data-value="1000">1000</button>
         </div>
+
         <div class="cash">
           <button data-value="500">500</button>
           <button data-value="100">100</button>
         </div>
+
         <div class="cash">
           <button data-value="50">50</button>
           <button data-value="10">10</button>
         </div>
+
         <div class="cash">
           <button data-value="5">5</button>
           <button data-value="1">1</button>
         </div>
+
         <div>
           <button id="given-reset-btn">reset</button>
         </div>
+
       </div>
 
       <details class="price-settings card">
         <summary>
         </summary>
         <div class="settings-content">
+
           <div class="setting-item">
             <label for="warabimochi-price">わらび餅</label>
             <input type="number" id="warabimochi-price">
           </div>
+
           <div class="setting-item">
             <label for="yakitori-price">焼き鳥</label>
             <input type="number" id="yakitori-price">
           </div>
+
           <div class="setting-item">
             <label for="karubo-price">カルボ</label>
             <input type="number" id="karubo-price">
           </div>
 
           <div>
+            <a href="./test.html">debug info</a>
           </div>
         </div>
       </details>
@@ -107,7 +124,9 @@
   </div>
 
   <footer>
-    <p>&copy;T.A. v1.0.5</p>
+    <p>&copy;T.A.</p>
+    <p>v1.0.6</p>
+    <p id="lastModified"></p>
   </footer>
 </body>
 

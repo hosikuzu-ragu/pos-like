@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- DOM ELEMENTS ---
+    document.getElementById("lastModified").innerHTML = document.lastModified
     const totalDisplay = document.getElementById("totalDisplay");
     const givenDisplay = document.getElementById("givenDisplay");
     const changeDisplay = document.getElementById("changeDisplay");

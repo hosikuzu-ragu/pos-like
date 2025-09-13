@@ -222,6 +222,10 @@ body {
 }
 
 footer {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     text-align: center;
     margin-top: 1.5em;
     color: #888;
@@ -240,4 +244,10 @@ footer {
         right: 2em;
         top: 5em;
     }
+}
+
+/* Safari fix for disabled input opacity */
+.display input:disabled {
+    opacity: 1;
+    -webkit-text-fill-color: currentcolor;
 }
