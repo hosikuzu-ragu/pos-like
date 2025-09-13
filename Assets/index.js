@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- INITIALIZATION ---
     const initialize = () => {
-        document.getElementById("lastModified").textContent = document.lastModified;
+        document.getElementById("lastModified").textContent = `lastModified: ${document.lastModified}`;
         if (!loadStateFromURL()) {
             // No default products
             saveStateToURL();
