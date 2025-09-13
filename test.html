@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information</title>
+</head>
+
+<body>
+    <p>Last Updated: <span id="updatedTimestamp"></span></p>
+    <div>
+        <label for="updateIntervalInput">Update Interval (ms):</label>
+        <input type="number" id="updateIntervalInput" value="5000" min="1">
+        <button id="setUpdateIntervalBtn">設定</button>
+    </div>
+    <div>
+        <details open>
+            <summary>screen</summary>
+            <p id="screen"></p>
+        </details>
+    </div>
+    <div>
+        <details open>
+            <summary>location</summary>
+            <p id="location"></p>
+        </details>
+    </div>
+    <div>
+        <details open>
+            <summary>navigator</summary>
+            <p id="navigator"></p>
+        </details>
+    </div>
+    <div>
+        <details open>
+            <summary>document</summary>
+            <p id="document"></p>
+        </details>
+    </div>
+</body>
+
+<style>
+    div {
+        border: 2px solid black;
+        padding: 10px;
+        margin-top: 10px;
+        word-break: break-all;
+    }
+</style>
+
+<script>
+    // @ts-check
+
+    let intervalId; // To store the ID of the interval
+
+    const updateInformation = () => {
+        const screenArea = document.getElementById("screen");
+        if (screenArea) {
+            const screenContents = {
+                availHeight: screen.availHeight ?? 'none',
+                availWidth: screen.availWidth ?? 'none',
+                availLeft: screen.availLeft ?? 'none',
+                availTop: screen.availTop ?? 'none',
+                height: screen.height ?? 'none',
+                width: screen.width ?? 'none',
+                colorDepth: screen.colorDepth ?? 'none',
+                pixelDepth: screen.pixelDepth ?? 'none',
+                isExtended: screen.isExtended ?? 'none',
+                orientation: {
+                    angle: screen.orientation?.angle ?? 'none',
+                    type: screen.orientation?.type ?? 'none',
+                },
+            };
+            screenArea.innerHTML = JSON.stringify(screenContents, null, '◦').replace(/\n/g, '<br>');
+        }
+
+        const locationArea = document.getElementById("location");
+        if (locationArea) {
+            const locationContents = {
+                href: location.href ?? 'none',
+                protocol: location.protocol ?? 'none',
+                origin: location.origin ?? 'none',
+                host: location.host ?? 'none',
+                hostname: location.hostname ?? 'none',
+                port: location.port ?? 'none',
+                pathname: location.pathname ?? 'none',
+                search: location.search ?? 'none',
+                hash: location.hash ?? 'none',
+            };
+            locationArea.innerHTML = JSON.stringify(locationContents, null, '◦').replace(/\n/g, '<br>');
+        }
+
+        const navigatorArea = document.getElementById("navigator");
+        if (navigatorArea) {
+            const navigatorContents = {
+                cookieEnabled: navigator.cookieEnabled ?? 'none',
+                deviceMemory: navigator.deviceMemory ?? 'none',
+                hardwareConcurrency: navigator.hardwareConcurrency ?? 'none',
+                language: navigator.language ?? 'none',
+                languages: navigator.languages ?? 'none',
+                maxTouchPoints: navigator.maxTouchPoints ?? 'none',
+                onLine: navigator.onLine ?? 'none',
+                pdfViewerEnabled: navigator.pdfViewerEnabled ?? 'none',
+                userAgent: navigator.userAgent ?? 'none',
+                webdriver: navigator.webdriver ?? 'none',
+                appCodeName: navigator.appCodeName ?? 'none',
+                appName: navigator.appName ?? 'none',
+                appVersion: navigator.appVersion ?? 'none',
+                doNotTrack: navigator.doNotTrack ?? 'none',
+                platform: navigator.platform ?? 'none',
+                product: navigator.product ?? 'none',
+                productSub: navigator.productSub ?? 'none',
+                vendor: navigator.vendor ?? 'none',
+                vendorSub: navigator.vendorSub ?? 'none',
+            };
+            navigatorArea.innerHTML = JSON.stringify(navigatorContents, null, '◦').replace(/\n/g, '<br>');
+        }
+
+        const documentArea = document.getElementById("document");
+        if (documentArea) {
+            const documentContents = {
+                adoptedStyleSheets_length: document.adoptedStyleSheets?.length ?? 'none',
+                characterSet: document.characterSet ?? 'none',
+                childElementCount: document.childElementCount ?? 'none',
+                compatMode: document.compatMode ?? 'none',
+                contentType: document.contentType ?? 'none',
+                documentURI: document.documentURI ?? 'none',
+                hidden: document.hidden ?? 'none',
+                pictureInPictureEnabled: document.pictureInPictureEnabled ?? 'none',
+                prerendering: document.prerendering ?? 'none',
+                timeline_currentTime: document.timeline?.currentTime ?? 'none',
+                visibilityState: document.visibilityState ?? 'none',
+                fullscreenEnabled: document.fullscreenEnabled ?? 'none',
+                lastModified: document.lastModified ?? 'none',
+                readyState: document.readyState ?? 'none',
+                referrer: document.referrer ?? 'none',
+                title: document.title ?? 'none',
+                URL: document.URL ?? 'none',
+            };
+            documentArea.innerHTML = JSON.stringify(documentContents, null, '◦').replace(/\n/g, '<br>');
+        }
+
+        const updatedTimestampEl = document.getElementById("updatedTimestamp");
+        if (updatedTimestampEl) {
+            const timestampString = new Date().toLocaleString();
+            updatedTimestampEl.textContent = timestampString;
+        }
+        console.log('updated');
+    };
+
+    const setupInterval = (intervalMilliseconds) => {
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
+        intervalId = setInterval(updateInformation, intervalMilliseconds);
+    };
+
+    window.onload = () => {
+        const updateIntervalInput = document.getElementById("updateIntervalInput");
+        const setUpdateIntervalBtn = document.getElementById("setUpdateIntervalBtn");
+
+        // Initial setup
+        updateInformation();
+        setupInterval(parseInt(updateIntervalInput.value, 10));
+
+        setUpdateIntervalBtn.addEventListener('click', () => {
+            const newInterval = parseInt(updateIntervalInput.value, 10);
+            if (newInterval >= 1) {
+                setupInterval(newInterval);
+                console.log(`Update interval set to ${newInterval} milliseconds.`);
+            } else {
+                alert("Please enter a valid interval (1 second or more).");
+                updateIntervalInput.value = "1";
+                setupInterval(1);
+            }
+        });
+    };
+
+</script>
+
+</html>
