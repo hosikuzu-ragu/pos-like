@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page Title</title>
+</head>
+
+<style>
+    body {
+        height: 100%;
+        width: 100%;
+        background-color: #ffffff;
+    }
+</style>
+
+<body id="main">
+
+</body>
+
+<script>
+    const colors = ['ff0000', '00ff00', '0000ff']
+    const main = document.getElementById("main")
+    let index = 0
+    setInterval(() => {
+        main.style = `background-color: #${colors[index]}`
+        index++
+        if (index == colors.length) index = 0
+        console.log(index)
+    }, 0.20 * 1000);
+</script>
+
+</html>
